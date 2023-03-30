@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="0; url=/login.html"> -->
+    <title>TDP-Office</title>
+    <link rel="stylesheet" type="text/css" href="\Home_page.css">
+    <link rel="stylesheet" type="text/css" href="\Profile.css">
+</head>
+<body>
+  <div>
+    <div class="navigation">
+        <ul>
+            
+            <li class="list active">
+                <b></b>
+                <b></b>
+                <a href="#" id="Home">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="title" >Home</span>
+                </a>
+            </li>
+            <li class="list">
+                <b></b>
+                <b></b>
+                <a href="\Dashboard.html" id='Dashboard'>
+                    <span class="icon"><ion-icon name="grid-outline"></ion-icon></span>
+                    <span class="title" >Dashboard</span>
+                </a>
+            </li>
+            <li class="list">
+                <b></b>
+                <b></b>
+                <a href="#" id="Contact">
+                    <span class="icon"><ion-icon name="person-remove-outline"></ion-icon></span>
+                    <span class="title" >Profile</span>
+                </a>
+            </li>
+            <li class="list">
+                <b></b>
+                <b></b>
+                <a href="#"  id="Settings">
+                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                    <span class="title" >Settings</span>
+                </a>
+            </li>
+            <li class="list">
+                <b></b>
+                <b></b>
+                <a href="\Login.html" target="_parent" id="Login">
+                    <span class="icon"><ion-icon name="log-in-outline"></ion-icon></span>
+                    <span class="title" >Login</span>
+                </a>
+            </li>
+            <li class="list">
+                <b></b>
+                <b></b>
+                <a href="#"  id="LOGOUT">
+                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                    <span class="title">LOGOUT</span>
+                </a>
+            </li>
+        </ul>  
+      </div>
+      
+    <div class="toggle">
+      <ion-icon name="menu-outline" class="open"></ion-icon>
+      <ion-icon name="close-circle-outline" class="close"></ion-icon>
+    </div>
+  <div class="content1"  id="Home-content">
+  <div class="main-content">
+   <header>
+    <div class="headline active">
+      <label>
+      <h2>TDP-Shell</h2>
+      <small id="today-date" ></small>
+      </label>
+    </div>
+     <div class="user-wapper">
+      <p><img src="tdp.jpg" width="45px" height="45px" alt="" ></p>
+      <div>
+        <h4>Musharaf</h4>
+        <small>Shaik</small>
+      </div>
+     </div>
+    </header>
+    <main>
+      <div class="dashboard">
+        <div class="header1">
+          <h1>Active Members</h1>
+        </div>
+        <div class="content">
+          <div class="widget">
+            <h3>Hours Worked</h3>
+            <div class="chart">
+              <canvas id="hoursChart"></canvas>
+            </div>
+          </div>
+          <div class="widget">
+            <h3>Active Staff Members</h3>
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Hours Worked</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sk Musharaf</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Datta sai</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Chandu</td>
+                    <td>4</td>
+                  </tr>
+                  <tr>
+                    <td>Karthik</td>
+                    <td>4</td>
+                  </tr>
+                  <tr>
+                    <td>Nagur</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Kiran</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Srinu</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Naveen</td>
+                    <td>3</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+</div>
+</div>
+</div>
+<div class="content1" id="Contact-content">
+  <?php
+  // Connect to database
+  $servername = "localhost";
+  $username = "username";
+  $password = "password";
+  $dbname = "myDB";
+
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  // Retrieve user data from database
+  $sql = "SELECT name, email, first_login,mobile_no, profile_image FROM staff WHERE id = $user_id";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+      $name = $row["name"];
+      $email = $row["email"];
+      $mobile_no = $row["mobile_no"];
+      $first_login = $row["first_login"];
+      $profile_image = $row["profile_image"];
+    }
+  } else {
+    echo "No results found.";
+  }
+
+  $conn->close();
+?>
+
+<div class="profile-page">
+    <div class="H-profile">
+        <h2><b>User Profile</b></h2>
+        <small class="little">TDP-Shell</small>
+    </div>
+    <main class="body-page">
+        <?php if($profile_image) { ?>
+        <img src="<?php echo $profile_image ?>" class="profile_img" alt="">
+        <?php } else { ?>
+        <p>No profile image found.</p>
+        <?php } ?>
+        <label>Name: <?php echo $name ?></label><br>
+        <label>Email: <?php echo $email ?></label><br>
+        <label>Mobile No: <?php echo $mobile_no ?></label><br>
+        <label>First login: <?php echo $first_login ?></label><br>
+        <button class="btn-profile"><a href='setting-profile.html'>Update Profile</a></button>
+    </main>
+</div>
+</div>
+<div class="content1" id="Settings-content">
+  <div class="header2" id="Settin">
+  <a href="\Home_page.html"><h1>Settings</h1></a>
+  </div>
+	<div class="main-settings">
+		<nav class="circlenav">
+			<ul class="circleul">
+				<li class="circle"><a id="cpas">Change Password</a></li>
+				<li class="circle"><a id="cp">Change Profile</a></li>
+				<li class="circle"><a id="cu">Contact Us</a></li>
+			</ul>
+		</nav>
+		<section id="change-password-form" class="st">
+			<h2>Change Password</h2>
+			<form>
+				<label for="current_password">Current Password:</label>
+				<input type="password" id="current_password" name="current_password" placeholder="Current Password">
+				<label for="new_password">New Password:</label>
+				<input type="password" id="new_password" name="new_password" placeholder="New Password">
+				<label for="confirm_password">Confirm Password:</label>
+				<input type="password" id="confirm_password" name="confirm_password" placeholder="confirm Password">
+				<button type="submit">Save Changes</button>
+			</form>
+		</section>
+		<section id="change-profile-form"  class="st">
+			<h2>Change Profile</h2>
+			<form>
+				<label for="name">Full Name:</label>
+				<input type="text" id="name" name="name" placeholder="Full Name">
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email" placeholder="Enter your Email">
+        <label for="tel">Mobile No :</label>
+        <input type="tel" id="mobile_no" name="mobile_no" required placeholder="Enter Mobile Number">
+				<label for="bio">Upload <b>Profile</b></label>
+				<input type="file" name="img" placeholder="Upload image">
+        <label for="password">Password :</label>
+        <input type="password" required name="password" placeholder="Enter Password">
+				<button type="submit">Save Changes</button>
+			</form>
+		</section>
+		<section id="contact-form"  class="st">
+			<h2>Contact Us</h2>
+			<form>
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name">
+				<p>Fill the Contact Form<a href="\contact.html" target="_top">GO to Form--></a></p>
+			</form>
+		</section>
+	</div>
+</div>
+<div class="content1" id="LOGOUT-content">
+  <p style="color: aqua;">Musharaf</p>
+</div>
+
+<script>
+  // Hide all content elements initially
+var contentElems = document.querySelectorAll('.content1');
+for (var i = 0; i < contentElems.length; i++) {
+  contentElems[i].style.display = 'none';
+}
+
+// Show the home content by default
+document.getElementById('Home-content').style.display = 'block';
+
+// Add click event listeners to each navbar item
+document.getElementById('Home').addEventListener('click', function(e) {
+  e.preventDefault();
+  hideAllContent();
+  document.getElementById('Home-content').style.display = 'block';
+});
+
+document.getElementById('Contact').addEventListener('click', function(e) {
+  e.preventDefault();
+  hideAllContent();
+  document.getElementById('Contact-content').style.display = 'block';
+});
+
+document.getElementById('Settings').addEventListener('click', function(e) {
+  e.preventDefault();
+  hideAllContent();
+  document.getElementById('Settings-content').style.display = 'block';
+});
+
+document.getElementById('LOGOUT').addEventListener('click', function(e) {
+  e.preventDefault();
+  hideAllContent();
+  document.getElementById('LOGOUT-content').style.display = 'block';
+});
+
+// Helper function to hide all content elements
+function hideAllContent() {
+  for (var i = 0; i < contentElems.length; i++) {
+    contentElems[i].style.display = 'none';
+  }
+}
+</script>
+
+<script>
+var Elems = document.querySelectorAll('.st');
+for (var i = 0; i < Elems.length; i++) {
+Elems[i].style.display = 'none';
+}
+document.getElementById('cpas').addEventListener('click', function(e) {
+  e.preventDefault();
+  hideContent();
+  document.getElementById('change-password-form').style.display = 'block';
+});
+
+document.getElementById('cp').addEventListener('click', function(e) {
+  e.preventDefault();
+  hideContent();
+  document.getElementById('change-profile-form').style.display = 'block';
+});
+
+document.getElementById('cu').addEventListener('click', function(e) {
+  e.preventDefault();
+  hideContent();
+  document.getElementById('contact-form').style.display = 'block';
+});
+
+function hideContent() {
+  for (var i = 0; i < Elems.length; i++) {
+    Elems[i].style.display = 'none';
+  }
+}
+</script>
+
+
+
+
+
+
+
+<script>
+let date=document.getElementById('today-date')
+date.innerText= new Date().toLocaleDateString();
+</script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+
+    
+
+let menutoggle=document.querySelector('.toggle');
+let navigation=document.querySelector('.navigation')
+menutoggle.onclick=function(){
+menutoggle.classList.toggle('active');
+navigation.classList.toggle('active');
+document.body.classList.toggle('nav-active');
+}
+let list = document.querySelectorAll('.list');
+for (let i = 0; i < list.length; i++) {
+list[i].onclick = function() {
+    
+for (let j = 0; j < list.length; j++) {
+list[j].classList.remove('active');
+}
+   
+// Add active class to clicked item
+this.classList.add('active');
+
+};
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Hours worked chart
+        let hoursChart = new Chart(document.getElementById('hoursChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Sk Musharaf', 'Datta sai','Chandu','Nagur','Kiran','Karthik','Naveen'],
+            datasets: [{
+            label: 'Hours Worked',
+            data: [3,3,4,4,3,3,3,3],
+            backgroundColor: ['#3e95cd', '#8e5ea2']
+            }]
+        },
+        options: {
+            title: {
+            display: true,
+            text: 'Hours Worked by Staff Members'
+            },
+            scales: {
+            yAxes: [{
+                ticks: {
+                beginAtZero: true
+                }
+            }]
+            }
+        }
+        });
+  </script>
+   <script>
+      // Check if the dashboard page is already open
+if (window.location.href.indexOf('/dashboard') !== -1) {
+  // Redirect to the existing dashboard page
+  window.location.href = '/dashboard';
+} else {
+  // Open the dashboard page in a new tab
+  window.open('/dashboard', '_parent');
+}
+      </script> 
+ 
+</body>
+</html>
