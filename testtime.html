@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="\Dashboard.css">
+    <style>
+        :root{
+    --background-color: #0d1323;
+    --background-light: #1d204b;
+    --color-blue: #5746ea;
+
+    --color-orange: #ff8b64;
+    --color-light-blue: #56c2e6;
+    --color-red: #ff5e7d;
+    --color-green: #4bcf83;
+    --color-purple: #7434d1;
+    --color-yellow: #f1c75b;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    min-height: 100vh;
+}
+
+body{
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.container{
+    width: 100%;
+    max-width: 800px;
+    margin: 3em;
+    display: flex;
+}
+.sidebar{
+    background-color: var(--background-light);
+    border-radius: 10px;
+}
+.tracks{
+    flex-grow: 1;
+    margin-left: 1.5em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 1.5em;
+}
+
+.profile{
+    background-color: var(--color-blue);
+    padding: 1.5em;
+    border-radius: 10px;
+}
+.profile img{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin-bottom: 2em;
+}
+
+.stats-text{
+    font-size: .8em;
+    color: #cecece;
+}
+.name{
+    font-size: 1.5em;
+    color: #fff;
+}
+.times{
+    padding: 1em 1.5em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.times p.active button{
+    color:blue;
+    margin: .5em 0;
+    border-radius:20px ;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(yellow,white);
+    
+}
+
+
+.track-item{
+    background-color: #fff;
+    border-radius: 10px;
+    background-color: var(--background-light);
+    color: #fff;
+    padding: 1em;
+    position: relative;
+    margin-top: 14px;
+}
+.track-item .nav{
+    display: flex;
+    justify-content: space-between;
+}
+.track-item .nav span:nth-child(2){
+    margin-top: -.3em;
+    font-weight: bolder;
+}
+
+.track-item .time{
+    font-size: 2em;
+    margin-top: .5em;
+}
+.track-item .previous{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.track-item::after{
+    content: '';
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: -15px;
+    left: 0;
+    z-index: -1;
+    border-radius: 10px;
+    transition: top .3s;
+}
+.track-item:hover::after{
+    top: -30px;
+}
+
+.track-item:nth-child(1)::after{
+    background-color: var(--color-orange);
+}
+.track-item:nth-child(2)::after{
+    background-color: var(--color-light-blue);
+}
+.track-item:nth-child(3)::after{
+    background-color: var(--color-red);
+}
+.track-item:nth-child(4)::after{
+    background-color: var(--color-green);
+}
+
+
+
+@media(max-width: 680px) {
+    .container{
+        flex-direction: column;
+    }
+    .sidebar{
+        margin-bottom: 1.5em;
+    }
+    .tracks{
+        margin-left: 0;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="./dp.png" alt="">
+                <p class="stats-text">Stats for</p>
+                <p class="name">Shaik Musharaf</p>
+            </div>
+            <div class="times">
+               
+                <p class="active"><button class="button">Start Work</button></p>
+                
+            </div>
+        </div>
+        <div class="tracks">
+            <div class="track-item">
+                <div class="nav">
+                    <span>Hours</span>
+                </div>
+                <p id="hours" class="time">0hrs</p>
+                
+            </div>
+            <div class="track-item">
+                <div class="nav">
+                    <span>Minutes</span>
+                    
+                </div>
+                <p  id="minutes" class="time">0m</p>
+                
+            </div>
+            <div class="track-item">
+                <div class="nav">
+                    <span>Seconds</span>
+                    
+                </div>
+                <p id="seconds" class="time">0s</p>
+               
+            </div>
+            <div class="track-item">
+                <div class="nav">
+                    <span>Work Remainder</span>
+                    
+                </div>
+                <p id="active-time" class="time">0s</p>
+                
+            
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    
+  let timerId;
+let hours = 0, minutes = 0, seconds = 0;
+
+function resetTimer() {
+  clearInterval(timerId);
+  timerId = setInterval(() => {
+    seconds++;
+    if (seconds === 60) {
+      seconds = 0;
+      minutes++;
+    }
+    if (minutes === 60) {
+      minutes = 0;
+      hours++;
+    }
+    if (hours === 3) {
+      clearInterval(timerId);
+      alert("You have reached 3 hours of work!");
+    }
+    document.getElementById("hours").innerText = `${hours}hrs`;
+    document.getElementById("minutes").innerText = `${minutes}m`;
+    document.getElementById("seconds").innerText = `${seconds}s`;
+    localStorage.setItem("time", JSON.stringify({ hours, minutes, seconds }));
+  }, 1000);
+}
+
+function pauseTimer() {
+  clearInterval(timerId);
+}
+
+function resumeTimer() {
+  resetTimer();
+}
+
+function startTimer() {
+  resetTimer();
+  let inactiveTime = 0;
+  const inactiveTimeout = 10 * 60 * 1000; // 10 minutes
+
+  const resetInactiveTimer = () => {
+    inactiveTime = 0;
+    updateInactiveTime(inactiveTimeout - inactiveTime);
+  };
+
+  const pauseIfInactive = () => {
+    inactiveTime += 1000;
+    if (inactiveTime >= inactiveTimeout) {
+      // Pause timer here
+      pauseTimer();
+      alert("Timer has been paused due to inactivity");
+    }
+    updateInactiveTime(inactiveTimeout - inactiveTime);
+  };
+
+  let mouseMoveTimeoutId;
+  const resetMouseMoveTimeout = () => {
+    clearTimeout(mouseMoveTimeoutId);
+    mouseMoveTimeoutId = setTimeout(resetInactiveTimer, 1000);
+  };
+
+  const updateInactiveTime = (time) => {
+    const remainderMinutes = Math.floor(time / 1000 / 60);
+    const remainderSeconds = Math.floor((time / 1000) % 60);
+    document.getElementById("active-time").innerText = `${remainderMinutes}m ${remainderSeconds}s`;
+  };
+
+  document.addEventListener("mousemove", resetMouseMoveTimeout);
+  document.addEventListener("keydown", resetMouseMoveTimeout);
+
+  timerId = setInterval(() => {
+    pauseIfInactive();
+  }, 1000);
+}
+
+document.querySelector("button").addEventListener("click", startTimer);
+
+</script>
+
+</body>
+</html>

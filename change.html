@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+background: #000000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+       .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+label {
+  margin-bottom: 10px;
+  color:orangered;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+
+        </style>
+          <script>
+            function verifyPassword() {
+              var newPassword = document.getElementById("new-password").value;
+              var confirmPassword = document.getElementById("confirm-password").value;
+              if (newPassword !== confirmPassword) {
+                alert("Password mismatched");
+                return false;
+              }
+              return true;
+            }
+          </script> 
+    </head>
+    <body>
+
+        <div class="container">
+            <form id="change-password" class="inputdata" onsubmit="return verifypassword()">
+              <!-- <label for="new-password">New Password:</label>
+              <input type="password" id="new-password"name="new-password" placeholder="new-password" required>
+              
+              <label for="confirm-password">Confirm Password:</label>
+              <input type="password" id="confirm-password" placeholder="confirm-password" required>
+               -->
+               <label for="new-password">New Password:</label>
+               <input type="password" class="field" id="new-password" name="new-password" placeholder="Enter new password" required>
+               
+               <label for="confirm-password">Confirm Password:</label>
+               <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm new password" required>
+
+
+              <!-- <a href="login.html"> -->
+              <button>Save Changes</button>
+              </a>
+            </form>
+          </div>
+          <!-- <script>
+            function verifyPassword() {
+              var newPassword = document.getElementById("new-password").value;
+              var confirmPassword = document.getElementById("confirm-password").value;
+              if (newPassword !== confirmPassword) {
+                alert("Password mismatched");
+                return false;
+              }
+              return true;
+            }
+          </script>  -->
+          
+  </body>
+</html>
+
+  

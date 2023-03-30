@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .navigation {
+  width: 70px; /* inactive width */
+}
+
+.navigation.active {
+  width: 220px; /* active width */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content > div {
+  display: none;
+}
+
+.content > div.show {
+  display: block;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.widget {
+  width: calc(50% - 1rem);
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  padding: 1rem;
+}
+
+.chart {
+  height: 200px;
+}
+
+.table {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <ul>
+          <li class="list active" data-target="home-section">
+            <a href="#">Home</a>
+          </li>
+          <li class="list" data-target="about-section">
+            <a href="#">About</a>
+          </li>
+          <li class="list" data-target="contact-section">
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="content">
+        <div id="home-section">
+          <h1>Welcome to my website!</h1>
+          <p>This is the home section.</p>
+        </div>
+      
+        <div id="about-section">
+          <h1>About me</h1>
+          <p>This is the about section.</p>
+        </div>
+      
+        <div id="contact-section">
+          <h1>Contact me</h1>
+          <p>This is the contact section.</p>
+        </div>
+      </div>
+      
+    <div class="dashboard">
+        <div class="header">
+          <h1>Staff Management Dashboard</h1>
+        </div>
+        <div class="content">
+          <div class="widget">
+            <h2>Hours Worked</h2>
+            <div class="chart">
+              <canvas id="hoursChart"></canvas>
+            </div>
+          </div>
+          <div class="widget">
+            <h2>Active Staff Members</h2>
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Hours Worked</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>John Doe</td>
+                    <td>32</td>
+                  </tr>
+                  <tr>
+                    <td>Jane Smith</td>
+                    <td>28</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <script>
+        // Hours worked chart
+            let hoursChart = new Chart(document.getElementById('hoursChart'), {
+            type: 'bar',
+            data: {
+                labels: ['John Doe', 'Jane Smith'],
+                datasets: [{
+                label: 'Hours Worked',
+                data: [32, 28],
+                backgroundColor: ['#3e95cd', '#8e5ea2']
+                }]
+            },
+            options: {
+                title: {
+                display: true,
+                text: 'Hours Worked by Staff Members'
+                },
+                scales: {
+                yAxes: [{
+                    ticks: {
+                    beginAtZero: true
+                    }
+                }]
+                }
+            }
+            });
+      </script>
+      <script></script>
+</body>
+</html>

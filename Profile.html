@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Member Profile</title>
+    <link rel="stylesheet" type="text/css" href="Profile.css">
+  </head>
+  <body>
+    <?php
+      // Connect to database
+      $servername = "localhost";
+      $username = "username";
+      $password = "password";
+      $dbname = "myDB";
+
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+      }
+
+      // Retrieve user data from database
+      $sql = "SELECT name, email, first_login,mobile_no, profile_image FROM staff WHERE id = $user_id";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+          $name = $row["name"];
+          $email = $row["email"];
+          $mobile_no = $row["mobile_no"];
+          $first_login = $row["first_login"];
+          $profile_image = $row["profile_image"];
+        }
+      } else {
+        echo "No results found.";
+      }
+
+      $conn->close();
+    ?>
+
+<div class="profile-page">
+        <header class="H-profile">
+            <h2><b>User Profile</b></h2>
+            <small>TDP-Shell</small>
+        </header>
+        <main class="body-page">
+            <?php if($profile_image) { ?>
+            <img src="<?php echo $profile_image ?>" class="profile_img" alt="">
+            <?php } else { ?>
+            <p>No profile image found.</p>
+            <?php } ?>
+            <label>Name: <?php echo $name ?></label><br>
+            <label>Email: <?php echo $email ?></label><br>
+            <label>Mobile No: <?php echo $mobile_no ?></label><br>
+            <label>First login: <?php echo $first_login ?></label><br>
+            <button class="btn-profile"><a href='Home_page.html'>Update Profile</a></button>
+        </main>
+</div>
+    
+    
+  </body>
+</html>

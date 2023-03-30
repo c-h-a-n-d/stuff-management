@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Forgot Password</title>
+    <link rel="stylesheet" type="text/css" href="forget.css">
+	<style>
+        body{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+background: #000000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+		form {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px solid #dd2121;
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 80px;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    color: #df8888;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+p {
+    color: #666;
+    font-size: 18px;
+}
+
+input[type="email"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+		</style>
+</head>
+<body>
+	<form action="#" method="post">
+		<h2>Forgot Password</h2>
+		<p>Please enter your email address:</p>
+		<input type="email" id="email" placeholder="Enter Email" required >
+		<br><br>
+		<a href="otp.html" class="button">Submit</a>
+	</form>
+</body>
+</html>

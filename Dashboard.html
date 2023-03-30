@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="\Dashboard.css"
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="tdp.jpg" alt="">
+                <p class="stats-text">Stats for</p>
+                <p class="name">Shaik Musharaf</p>
+            </div>
+            <div class="times">
+               
+                <p class="active"><button class="button" id="start-btn">Start Work</button></p>
+                <p class="active"><button class="button" id="stop-btn">Stop Work</button></p>
+                <!-- <p class="active"><button class="button" id="resume-btn">Resume Work</button></p> -->
+                
+            </div>
+        </div>
+        <div class="tracks">
+            <div class="track-item">
+                <div class="nav">
+                    <span>Hours</span>
+                </div>
+                <p id="hours" class="time">0hrs</p>
+                
+            </div>
+            <div class="track-item">
+                <div class="nav">
+                    <span>Minutes</span>
+                    
+                </div>
+                <p  id="minutes" class="time">0m</p>
+                
+            </div>
+            <div class="track-item">
+                <div class="nav">
+                    <span>Seconds</span>
+                    
+                </div>
+                <p id="seconds" class="time">0s</p>
+               
+            </div>
+            <div class="track-item">
+                <div class="nav">
+                    <span>Work Remainder</span>
+                    
+                </div>
+                <p id="Remainder" class="time">0s</p>
+                
+            
+            </div>
+            <div class="track-item">
+                <div class="nav">
+                    <span>3Hrs Milestone</span>
+                    
+                </div>
+                <p id="active-time" class="time">3Hrs</p>
+                
+            
+            </div>
+            <div class="track-item">
+                <div class="nav">
+                    <span>Today Date</span>
+                    
+                </div>
+                <p id="today-date" class="time"></p>
+                
+            
+            </div>
+        </div>
+    </div>
+
+
+<script src="\Dashboard.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/idle-js@2.2.1/idle.js"></script>
+<script>
+   
+</script>
+
+
+</body>
+</html>

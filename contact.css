@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+body{
+    min-height:100vh;
+     background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)),url('https://media.istockphoto.com/photos/-picture-id1311934969?k=6&m=1311934969&s=170667a&w=0&h=i0Lm9EfUfdZ95-VWnKauM4lgPUDul1oI9yDa7RUkIt0=');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-page1{
+    position: relative;
+    width: 500px;
+    height: 800px;
+    top:10px;
+    background: transparent;
+    border: 2px solid rgba(238, 246, 19, 0.5);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter:blur(20px);
+    color: #fff;
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: height .2s ease;
+    overflow: hidden; 
+    
+}
+.form-page1 .form-box1{
+    width: 100%;
+    padding: 40px;
+}
+
+
+
+
+.form-box1 h2{
+    font-size: 2em;
+    color: lightgoldenrodyellow;
+    text-align: center;
+}
+.input-box1{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    border-bottom: 2px solid #24c3b6;
+    margin: 30px 0;
+}
+.input-box1 label{
+    position: absolute;
+    top :50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color :#fff;
+    font-weight: 500;
+    pointer-events: none;
+    transition: 0.6s;
+}
+.input-box1 input:focus~label,
+.input-box1 input:valid~label{
+    top: -7px;
+}
+.input-box1 input 
+{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color:#fff;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+button{
+    width:100%;
+    height: 45px;
+    background: linear-gradient(yellow,white);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+}

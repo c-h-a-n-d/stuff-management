@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile Settings</title>
+    <style>
+        h2{
+            text-align: center;
+        }
+        form {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type='tel'],
+input[type='file'] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+input[type="checkbox"] {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+button {
+    display: block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #555;
+}
+p
+{
+    color: aqua;
+}
+    </style>
+</head>
+<body>
+    <section id="change-profile-form"  class="st">
+        <h2>Change Profile</h2>
+        <form>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Full Name">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your Email">
+    <label for="tel">Mobile No :</label>
+    <input type="tel" id="mobile_no" name="mobile_no" required placeholder="Enter Mobile Number">
+            <label for="bio">Upload <b>Profile</b></label>
+            <input type="file" name="img" placeholder="Upload image">
+    <label for="password">Password :</label>
+    <input type="password" required name="password" placeholder="Enter Password">
+            <button type="submit">Save Changes</button>
+        </form>
+</body>
+</html>
